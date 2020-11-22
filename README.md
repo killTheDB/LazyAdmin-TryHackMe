@@ -1,8 +1,8 @@
 # LazyAdmin-TryHackMe
 
-# Lazy Admin
+# LazyAdmin
 
-[link to room](https://tryhackme.com/room/lazyadmin)
+[LazyAdmin-link](https://tryhackme.com/room/lazyadmin)
 
 TASK -1 USER FLAG
 
